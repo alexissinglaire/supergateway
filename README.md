@@ -56,6 +56,10 @@ npx -y supergateway \
     --sse "https://mcp-server-ab71a6b2-cd55-49d0-adba-562bc85956e3.supermachine.app" \
     --header "Authorization: Bearer some-token" \
     --header "X-My-Header: another-value"
+
+npx -y supergateway \
+    --sse "https://mcp-server-ab71a6b2-cd55-49d0-adba-562bc85956e3.supermachine.app" \
+    --envHeader "Authorization, X-My-Header"
 ```
 
 ## stdio → WS
