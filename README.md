@@ -23,7 +23,7 @@ npx -y supergateway --stdio "uvx mcp-server-git"
 - **`--logLevel info | none`**: Controls logging level (default: `info`). Use `none` to suppress all logs.
 - **`--cors`**: Enable CORS (stdio→SSE or stdio→WS mode)
 - **`--healthEndpoint /healthz`**: Register one or more endpoints (stdio→SSE or stdio→WS mode; can be used multiple times) that respond with `"ok"`
-- **`--envHeader "Authorizaton"`**: Add one or more headers taken from environment variable name (e.g Environment variable Authorization, value "Bearer 1234567890, therefore the HTTP header will be added with Authorization:Bearer 1234567890")
+- **`--envHeader "Authorizaton"`**: Add one or more headers taken from 1 or more environment variables. (e.g Environment variable Authorization, value "Bearer 1234567890, therefore the HTTP header will be added with Authorization:Bearer 1234567890")
 
 ## stdio → SSE
 
