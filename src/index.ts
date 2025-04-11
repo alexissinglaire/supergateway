@@ -115,6 +115,13 @@ async function main() {
       description:
         'Headers to be added to the request headers, e.g. --header "Authorization: Bearer <token>"',
     })
+
+    .option('envHeader', {
+      type: 'string',
+      default: '',
+      description: 'Comma-separated list of environment variable names to add as headers (when using --sse)',
+    })
+    
     .help()
     .parseSync()
 
@@ -169,10 +176,17 @@ async function main() {
       }
     } else if (hasSse) {
       if (argv.outputTransport === 'stdio') {
+        const envHeaderNames = (argv.envHeader as string).split(',').map(s => s.trim()).filter(Boolean);
+        const envHeaders: Record<string, string> = {};
+        for (const headerName of envHeaderNames) {
+            if (process.env[headerName]) {
+                envHeaders[headerName] = process.env[headerName]!;
+            }
+        }
         await sseToStdio({
           sseUrl: argv.sse!,
           logger,
-          headers: argv.header as string[],
+          headers: [...(argv.header as string[]), ...Object.entries(envHeaders).map(([key, value]) => `${key}: ${value}`)],
         })
       } else {
         logStderr(`Error: sse→${argv.outputTransport} not supported`)
