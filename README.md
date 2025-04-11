@@ -49,7 +49,7 @@ npx -y supergateway --sse "https://mcp-server-ab71a6b2-cd55-49d0-adba-562bc85956
 
 Useful for integrating remote SSE MCP servers into local command-line environments.
 
-You can also pass headers when sending requests. This is useful for authentication (if you activate --envHeader ensure there is correspondent environment varibale being created):
+You can also pass headers when sending requests. This is useful for authentication (if you activate --envHeader ensure there is/are correspondent environment variables being created):
 
 ```bash
 npx -y supergateway \
